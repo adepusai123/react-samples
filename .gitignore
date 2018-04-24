@@ -1,0 +1,9 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+# Dependency directories
+node_modules
+test-reports/assets/app.css
+dist
+test-reports
+server/public/upload/**/**/*.*
+server/public/tmp/*.*
+server/config/config-local.json
