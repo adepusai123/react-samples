@@ -1,30 +1,35 @@
 class Person {
-    constructor(name = 'Anonymous'){
+    constructor(name = 'Anonymous', age = 0){
         this.name = name;
+        this.age = age;
     }
     getGreeting(){
         // return "Hi, I am "+this.name+ "!"; //es5
         return `Hi, I am ${ this.name }!`;
     }
+    getDescription(){
+        return `${this.name} is ${this.age} years old.`;
+    }
 }
 
-let me = new Person('Sai Kumar');
-console.log(me.getGreeting());
-let other = new Person();
-console.log(other.getGreeting());
-//challenge task
-// setup constructor to take name and age (default - 0)
-//get description - Sai is 25 years old!;
-
-class HelpMe {
-    constructor(name, age = 0){
-        this.name = name;
-        this.age = age;
+class Student extends Person {
+    constructor(name, age, major){
+        super(name,age);
+        this.major = major;
+    }
+    hasMajor() {
+        return !!this.major;
     }
     getDescription(){
-        return `${this.name} is ${this.age} years old!`
+        let description = super.getDescription();
+        if(this.hasMajor()){
+            description += `Their major is ${this.major}.`;
+        }
+        return description;
     }
 }
 
-let my = new HelpMe('Sai',25);
-console.log(my.getDescription());
+let me = new Student('Sai Kumar', 25, 'Information Technoloy');
+console.log(me.getDescription());
+let other = new Student();
+console.log(other.getDescription());
