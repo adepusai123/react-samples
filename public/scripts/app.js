@@ -79,6 +79,13 @@ var Action = function (_React$Component3) {
     }
 
     _createClass(Action, [{
+        key: "handlePick",
+        value: function handlePick() {
+            // const randomNum = Math.floor(Math.random() * user.options.length);
+            // const option = user.options[randomNum];
+            alert('option');
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
@@ -86,7 +93,7 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     "button",
-                    { className: "btn" },
+                    { className: "btn", onClick: this.handlePick },
                     "What should i do ?"
                 )
             );
@@ -101,17 +108,16 @@ var Action = function (_React$Component3) {
 var user = {
     name: "",
     options: []
+    // const onSubmitForm = (e) =>{
+    //     e.preventDefault();
+    //     let option = e.target.elements.option.value;
+    //     if(option){
+    //         user.options.push(option);
+    //         e.target.elements.option.value ='';
+    //         renderApp();
+    //     }
+    // }
 };
-var onSubmitForm = function onSubmitForm(e) {
-    e.preventDefault();
-    var option = e.target.elements.option.value;
-    if (option) {
-        user.options.push(option);
-        e.target.elements.option.value = '';
-        renderApp();
-    }
-};
-
 var Options = function (_React$Component4) {
     _inherits(Options, _React$Component4);
 
@@ -122,11 +128,21 @@ var Options = function (_React$Component4) {
     }
 
     _createClass(Options, [{
+        key: "handleRemoveALL",
+        value: function handleRemoveALL() {
+            alert('Remove handler');
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
                 null,
+                React.createElement(
+                    "button",
+                    { onClick: this.handleRemoveALL },
+                    "Remove All"
+                ),
                 React.createElement(
                     "p",
                     null,
@@ -158,11 +174,23 @@ var AddOptions = function (_React$Component5) {
     }
 
     _createClass(AddOptions, [{
+        key: "handleAddOption",
+        value: function handleAddOption(e) {
+            e.preventDefault();
+            var option = e.target.elements.option.value.trim();
+            if (option) {
+                alert(option);
+                // user.options.push(option);
+                // e.target.elements.option.value ='';
+                // renderApp();
+            }
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "form",
-                { className: "form form-inline", onSubmit: onSubmitForm },
+                { className: "form form-inline", onSubmit: this.handleAddOption },
                 React.createElement("input", { type: "text", name: "option", placeholder: "type something!", className: "form-control" }),
                 React.createElement(
                     "button",

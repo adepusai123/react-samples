@@ -24,10 +24,15 @@ class Header extends React.Component {
     }
 }
 class Action extends React.Component {
+    handlePick(){
+        // const randomNum = Math.floor(Math.random() * user.options.length);
+        // const option = user.options[randomNum];
+        alert('option');
+    }
     render(){
         return (
             <div>
-                <button className="btn">What should i do ?</button>
+                <button className="btn" onClick={this.handlePick}>What should i do ?</button>
             </div>
         )
     }
@@ -37,19 +42,23 @@ let user = {
     name:"",
     options:[]
 }
-const onSubmitForm = (e) =>{
-    e.preventDefault();
-    let option = e.target.elements.option.value;
-    if(option){
-        user.options.push(option);
-        e.target.elements.option.value ='';
-        renderApp();
-    }
-}
+// const onSubmitForm = (e) =>{
+//     e.preventDefault();
+//     let option = e.target.elements.option.value;
+//     if(option){
+//         user.options.push(option);
+//         e.target.elements.option.value ='';
+//         renderApp();
+//     }
+// }
 class Options extends React.Component {
+    handleRemoveALL(){
+        alert('Remove handler');
+    }
     render(){
         return (
             <div>
+                <button onClick={this.handleRemoveALL}>Remove All</button>
                 <p>{this.props.options.length > 0 ? "Available options!" : "No! , options"}</p>
                 <ol>
                   {
@@ -64,9 +73,19 @@ class Options extends React.Component {
 //AddOptions - component here
 
 class AddOptions extends React.Component {
+   handleAddOption (e){
+        e.preventDefault();
+        const option = e.target.elements.option.value.trim();
+        if(option){
+            alert(option);
+            // user.options.push(option);
+            // e.target.elements.option.value ='';
+            // renderApp();
+        }
+    }
     render(){
         return (
-            <form className="form form-inline"  onSubmit={onSubmitForm}>
+            <form className="form form-inline"  onSubmit={this.handleAddOption}>
                 <input type="text" name="option" placeholder="type something!" className="form-control"/>
                 <button type="submit" className="btn">POST</button>
             </form>
