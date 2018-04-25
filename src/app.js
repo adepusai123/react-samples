@@ -1,3 +1,12 @@
+const user = {
+    name:"SAi Kumar",
+    getName() {
+        return this.name;
+    }
+}
+const getName = user.getName.bind({name:'Adepu'}); 
+console.log(getName());
+
 class IndecisionApp extends React.Component{
     render(){
         const title = "Indecision";
@@ -5,10 +14,18 @@ class IndecisionApp extends React.Component{
         const options =["one","two"];
         return (
             <div>
-                <Header title={title} subTitle ={subTitle}/>
-                <Action />
-                <Options options ={options}/>
-                <AddOptions />
+                <div className="form-group">
+                    <Header title={title} subTitle ={subTitle}/>
+                </div>
+                <div className="form-group">
+                    <Action />
+                </div>
+                <div className="form-group">
+                    <Options options ={options}/>
+                </div>
+                <div className="form-group">
+                    <AddOptions />
+                </div>
             </div>
         )
     }
@@ -38,27 +55,21 @@ class Action extends React.Component {
     }
 }
 //Options - component here
-let user = {
-    name:"",
-    options:[]
-}
-// const onSubmitForm = (e) =>{
-//     e.preventDefault();
-//     let option = e.target.elements.option.value;
-//     if(option){
-//         user.options.push(option);
-//         e.target.elements.option.value ='';
-//         renderApp();
-//     }
-// }
+
 class Options extends React.Component {
+    constructor(props){
+        super(props);
+        this.handleRemoveALL = this.handleRemoveALL.bind(this);
+    }
     handleRemoveALL(){
-        alert('Remove handler');
+        console.log(this.props.options)
     }
     render(){
         return (
             <div>
-                <button onClick={this.handleRemoveALL}>Remove All</button>
+                <div className="form-group">
+                    <button className="btn btn-danger" onClick={this.handleRemoveALL}>Remove All</button>
+                </div>
                 <p>{this.props.options.length > 0 ? "Available options!" : "No! , options"}</p>
                 <ol>
                   {
