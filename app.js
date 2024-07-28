@@ -15,17 +15,21 @@ const heading = React.createElement(
 // React Element
 const jsxHeader = (
   <div className="container">
-    <h1 className="header">This is JSX heading</h1>;
+    <h1 className="header">This is JSX heading</h1>
   </div>
 );
 
-// React Component. Naming conversion should start with Upper case
+// React Functional Component. Naming conversion should start with Upper case
+// {} u can write any JS express or function
 const HeaderComponent = ()=> {
     return <div className="header">
+        {jsxHeader} 
         <h1> Hello World! </h1>
     </div>
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(heading);
-root.render(jsxHeader);
+// root.render(jsxHeader);
+// Rendering the component 
+root.render(<HeaderComponent/>)
