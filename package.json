@@ -1,0 +1,32 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adepusai123/reactJs.git"
+  },
+  "keywords": [
+    "Sai",
+    "Kumar",
+    "Adepu",
+    "React",
+    "React",
+    "Dom",
+    "learning",
+    "course"
+  ],
+  "author": "Sai Kumar Adepu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adepusai123/reactJs/issues"
+  },
+  "homepage": "https://github.com/adepusai123/reactJs#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
