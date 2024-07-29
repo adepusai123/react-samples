@@ -14,16 +14,64 @@
             padding: 10px;
             margin: 20px;
 
-            > ul { 
+            > ul {
                 list-style-type: none;
                 display: flex;
 
                 li {
-                padding: 10px;
-                margin: 10px;
+                    padding: 10px;
+                    margin: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .main-container {
+        padding: 10px 0;
+        /* margin: 10px; */
+
+        .search {
+            height: 50px;
+            border: 0.5px solid #ccc2c2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .res-container {
+            border: 1px solid #908a8a;
+            padding: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 500px;
+
+            .res-card:hover {
+                background: rgb(240, 202, 186);
+            }
+
+            .res-card {
+                height: 300px;
+                width: 200px;
+                border: 1px solid rgb(158, 102, 102);
+                border-radius: 5px;
+                box-shadow: #908a8a;
+                margin: 15px;
                 cursor: pointer;
 
-            }}
+                img {
+                    padding: 5px;
+                    width: 180px;
+                    margin: 5px;
+                    /* height: 100px; */
+                }
+
+                .info {
+                    font-size: 14px;
+                    padding: 5px;
+                    margin: 5px;
+                    color: rgba(78, 7, 16, 0.595);
+                }
+            }
         }
     }
 }
