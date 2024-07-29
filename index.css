@@ -1,3 +1,29 @@
-.header {
-    color: teal;
+.layout {
+    .header {
+        border: 1px solid black;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+
+        .logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .nav-list {
+            padding: 10px;
+            margin: 20px;
+
+            > ul { 
+                list-style-type: none;
+                display: flex;
+
+                li {
+                padding: 10px;
+                margin: 10px;
+                cursor: pointer;
+
+            }}
+        }
+    }
 }

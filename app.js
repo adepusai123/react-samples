@@ -1,35 +1,44 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
-// React Element
-const heading = React.createElement(
-  "h1",
-  {
-    id: "header",
-  },
-  "Hello World from React"
-);
-// above code can be replaced by JSX code
-// for multiline JSX use () to wrap the code ex: (<h1>Hi</h1>)
-
-// React Element
-const jsxHeader = (
-  <div className="container">
-    <h1 className="header">This is JSX heading</h1>
-  </div>
-);
-
-// React Functional Component. Naming conversion should start with Upper case
-// {} u can write any JS express or function
-const HeaderComponent = ()=> {
-    return <div className="header">
-        {jsxHeader} 
-        <h1> Hello World! </h1>
+/**
+ * AppLayout
+ *  Header
+ *   Logo
+ *   Menu
+ *  Body
+ *   Search
+ *   Restuarant Card Container
+ *     RestroCard
+ *
+ *  Footer
+ *   CopyRight
+ *   Links
+ *   Contact Us
+ *
+ */
+const Header = () => {
+  return <div className="header">
+    <div >
+      <img  className="logo" src="https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg" alt="logo" />
     </div>
-}
+    <div className="nav-list">
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact Us</li>
+        <li>Cart</li>
+      </ul>
+    </div>
+  </div>
+};
 
+const AppLayout = () => {
+  return (
+    <div className="layout">
+      <Header />
+    </div>
+  );
+};
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(heading);
-// root.render(jsxHeader);
-// Rendering the component 
-root.render(<HeaderComponent/>)
+root.render(<AppLayout />);
