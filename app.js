@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { resList } from "./data";
 
 /**
  * AppLayout
@@ -39,16 +40,28 @@ const Header = () => {
   );
 };
 
-const ResCard = () => {
+const ResCard = (props) => {
+    const { resData} = props;
+    const cardInfoStyles = {
+        'font-size': '12px'
+    }
   return (
-    <div className="res-card">
+    <div className="res-card" key={resData?.info?.id}>
       <div>
         <img
-          src="https://www.fabhotels.com/blog/wp-content/uploads/2018/08/Resize_290818_ABs.jpg"
-          alt="resturant"
+          src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resData?.info?.cloudinaryImageId}
+          alt={resData?.info?.name}
         />
       </div>
-      <div className="info">Pandu Restuarant</div>
+      <div style={{'margin':'10px'}}>
+        <span className="info">{resData?.info?.name}</span>
+        <div style={cardInfoStyles}>
+        <span className="d-block">{resData?.info?.cuisines.join(',')}</span>
+        <span className="d-block">{resData?.info?.costForTwo}</span>
+        <span className="d-block">{resData?.info?.avgRatingString} stars</span>
+        <span className="d-block">{resData?.info?.locality}, {resData?.info?.areaName}</span>
+        </div>
+      </div>
     </div>
   );
 };
@@ -58,14 +71,7 @@ const Body = () => {
     <div className="main-container">
       <div className="search">Search</div>
       <div className="res-container">
-        <ResCard />
-        <ResCard />
-        <ResCard />
-        <ResCard />
-        <ResCard />
-        <ResCard />
-        <ResCard />
-        <ResCard />
+        <ResCard resData={resList[0]}/>
       </div>
     </div>
   );
