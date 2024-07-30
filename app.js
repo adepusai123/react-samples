@@ -71,7 +71,9 @@ const Body = () => {
     <div className="main-container">
       <div className="search">Search</div>
       <div className="res-container">
-        <ResCard resData={resList[0]}/>
+        {
+            resList.map((res)=> <ResCard resData={res}/>)
+        }
       </div>
     </div>
   );
