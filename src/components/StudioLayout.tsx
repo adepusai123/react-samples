@@ -1,14 +1,28 @@
-import { AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton, Box } from "@mui/material";
-import { Menu, Dashboard, Settings } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  IconButton,
+  Box,
+} from "@mui/material";
+import { Menu, Dashboard, Settings, ListAlt } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { toggleDrawer } from "../redux/drawerSlice";
 
 const drawerWidth = 240;
 
-const StudioLayout: React.FC = () => {
+const StudioLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.drawer.isOpen);
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -37,7 +51,7 @@ const StudioLayout: React.FC = () => {
       >
         <List>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/studio")}>
               <ListItemIcon>
                 <Dashboard />
               </ListItemIcon>
@@ -45,11 +59,11 @@ const StudioLayout: React.FC = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/studio/prompts")}>
               <ListItemIcon>
-                <Settings />
+                <ListAlt />
               </ListItemIcon>
-              <ListItemText primary="Settings" />
+              <ListItemText primary="Prompts" />
             </ListItemButton>
           </ListItem>
         </List>
@@ -58,7 +72,7 @@ const StudioLayout: React.FC = () => {
       {/* Main Content */}
       <Box component="main" sx={{ flexGrow: 1, p: 3, marginLeft: isOpen ? `${drawerWidth}px` : 0 }}>
         <Toolbar />
-        <Typography variant="h4">Studio Page</Typography>
+        {children}
       </Box>
     </Box>
   );
