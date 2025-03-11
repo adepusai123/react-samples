@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
 import StudioLayout from "./components/StudioLayout";
 import Prompts from "./pages/Prompts";
 import NewPrompt from "./pages/NewPrompt";
 import HomeLayout from "./components/HomeLayout";
 
-const isStudioEnabled = import.meta.env.VITE_ENABLE_STUDIO === "true";
-
 function App() {
+  const isStudioEnabled = useSelector((state: RootState) => state.studio.isEnabled);
+
   return (
     <Router>
       <Routes>
