@@ -1,6 +1,8 @@
 import { Box, Button, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addPrompt } from "../redux/promptsSlice";
 
 const categories = ["Business", "Creative", "Tech"];
 const multiSelectOptions = ["Option 1", "Option 2", "Option 3"];
@@ -11,11 +13,12 @@ const NewPrompt: React.FC = () => {
   const [multiSelect, setMultiSelect] = useState<string[]>([]);
   const [description, setDescription] = useState("");
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ name, category, multiSelect, description });
+    dispatch(addPrompt({ id: 0, name, category, multiSelect, description }));
     navigate("/studio/prompts");
   };
 

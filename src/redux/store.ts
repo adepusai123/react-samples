@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import drawerReducer from "./drawerSlice";
+import promptsReducer from "./promptsSlice";
 
 export const store = configureStore({
   reducer: {
     drawer: drawerReducer,
+    prompts: promptsReducer,
   },
 });
 

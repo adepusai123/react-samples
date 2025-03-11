@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -8,14 +10,9 @@ const columns: GridColDef[] = [
   { field: "category", headerName: "Category", flex: 1 },
 ];
 
-const rows = [
-  { id: 1, name: "Generate Report", category: "Business" },
-  { id: 2, name: "Write a Story", category: "Creative" },
-  { id: 3, name: "Code Review", category: "Tech" },
-];
-
 const Prompts: React.FC = () => {
   const navigate = useNavigate();
+  const prompts = useSelector((state: RootState) => state.prompts.list);
 
   return (
     <Box>
@@ -25,7 +22,7 @@ const Prompts: React.FC = () => {
           Add New
         </Button>
       </Box>
-      <DataGrid rows={rows} columns={columns} autoHeight />
+      <DataGrid rows={prompts} columns={columns} autoHeight />
     </Box>
   );
 };
