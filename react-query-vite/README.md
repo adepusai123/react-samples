@@ -52,3 +52,9 @@ export default tseslint.config({
   },
 })
 ```
+
+if nvm installed but not available 
+```
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh 
+``` 
